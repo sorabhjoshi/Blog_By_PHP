@@ -1,0 +1,388 @@
+html, body {
+  --sidebar-width: 250px;
+  --sidebar-width-narrow: 50px;
+  --header-height: 75px;
+  min-height: 100%;
+  margin: 0; 
+  padding: 0;
+  font-family: sans-serif;
+  background: #000000;
+  color: white;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 0;
+  height: 80%;
+  background: rgba(0, 0, 0, 0.9);
+  transition: width ease-in 300ms;
+}
+
+.sidebar .top {
+  position: sticky;
+  top: 0;
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: calc(var(--header-height));
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+}
+
+.sidebar .brand {
+  font-size: 2rem;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.sidebar .brand span {
+  padding-left: .5rem;
+  transition: opacity ease-in 200ms;
+  transition-delay: 150ms;
+}
+
+.sidebar .controls {
+  margin-left: auto;
+  margin-bottom: auto;
+}
+
+.sidebar .controls button {
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0; 
+  margin: 0;
+  transition: opacity ease-in 200ms;
+  transition-delay: 150ms;
+}
+
+.sidebar li {
+  padding: 0; 
+  margin: 0;
+}
+
+.sidebar li a {
+  display: inline-block;
+  width: 100%;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* My Account Button Styles */
+/* My Account Button Styles */
+#myAccountBtn {
+  background-color: #000000; /* Button background color */
+  color: white; /* Text color */
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 0.5rem 1rem; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transition for background, transform, and shadow */
+  width: 90%; /* Full width */
+  margin:0 10px; 
+}
+
+#myAccountBtn:hover {
+  background-color: #202121; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight upward movement on hover */
+  
+}
+#myAccountBtn a:hover {
+  color: white;
+  background-color: #202121;/* Darker shade on hover */
+  transform: translateY(-2px); /* Slight upward movement on hover */
+}
+
+#myAccountBtn:active {
+  transform: translateY(0); /* Reset position on click */
+  /* Return to original shadow */
+}
+
+
+/* Nested Links Styles */
+#accountLinks {
+  list-style-type: none; /* No list style */
+  padding: 0; /* No padding */
+  margin: 0 15px; /* No margin */
+  display: none; /* Hidden by default */
+}
+
+#accountLinks li {
+  padding: 0   ; /* No padding */
+  margin: 0 ; /* No margin */
+}
+
+
+#accountLinks li a {
+  display: block; /* Block display for links */
+  padding: 0.5rem 1.5rem; /* Padding for links */
+  text-decoration: none; /* No underline */
+  color: inherit; /* Inherit color */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+#accountLinks li a:hover {
+  background-color: #fff; /* White background on hover */
+  color: #000; /* Black text on hover */
+}
+
+/* pin for medium viewport */
+.wrapper.sidebar-open .sidebar {
+  width: 100%;
+}
+
+.wrapper.sidebar-open .sidebar .brand {
+  text-align: left;
+}
+
+.wrapper.sidebar-open .sidebar .brand span {
+  display: inline;
+}
+
+.wrapper.sidebar-open .sidebar .close {
+  display: inline-block;
+}
+
+.wrapper .sidebar .pin,
+.wrapper .sidebar .close,
+.wrapper.sidebar-open .sidebar .pin {
+  display: none;
+}
+
+.sidebar li a:hover {
+  background: #fff;
+  color: #000000;
+  transition: background-color 0.3s ease-in-out .1s; 
+}
+
+/* header & content */
+body > .wrapper > header {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+body > .wrapper > header button {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  margin-bottom: auto;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  background: #cdc2c2;
+  min-height: calc(95% - var(--header-height));
+  padding: 1rem;
+  color: rgb(143, 135, 135);
+  box-sizing: border-box;
+}
+
+/* small */
+@media (min-width: 567px) {
+  .wrapper.sidebar-open .sidebar {
+      width: var(--sidebar-width);
+  }
+}
+
+/* medium */
+@media (min-width: 768px) {
+  .sidebar {
+      width: calc(var(--sidebar-width-narrow));
+  }
+  
+  .sidebar .brand {
+      text-align: center;
+  }
+  
+  .sidebar .brand span,
+  .sidebar ul {
+      visibility: hidden;
+      opacity: 0;
+  }
+  
+  .wrapper > :not(:first-child) {
+      /* everything but the sidebar */
+      margin-left: var(--sidebar-width-narrow);
+  }
+  
+  .wrapper.sidebar-open .sidebar {
+      background: transparent;
+  }
+
+  .wrapper.sidebar-open > :not(:first-child) {
+      /* everything but the sidebar */
+      margin-left: var(--sidebar-width);
+  }
+
+  /* hover for medium viewport */
+  .sidebar:hover {
+      width: var(--sidebar-width);
+  }
+
+  .sidebar:hover .brand {
+      text-align: left;
+  }
+ 
+  .sidebar .brand > div:first-child {
+      position: relative;
+  }
+  
+  .sidebar .brand > div:first-child span {
+      /* remove from flow to make positioning the icon easier */
+      position: absolute;
+  }
+
+  .wrapper:not(.sidebar-open) .sidebar:hover .pin {
+      display: inline-block;
+  }
+
+  .wrapper.sidebar-open .sidebar .brand span,
+  .sidebar:hover .brand span,
+  .sidebar:hover ul,
+  .wrapper.sidebar-open .sidebar ul {
+      visibility: visible;
+      opacity: 1;
+  }
+}
+
+/* large */
+@media (min-width: 992px) {
+  .sidebar .brand {
+      text-align: left;
+  }
+
+  .sidebar .top .controls {
+      visibility: hidden;
+  }
+  
+  .sidebar {
+      width: var(--sidebar-width);
+  }
+  
+  .sidebar .brand span,
+  .sidebar ul,
+  .wrapper .sidebar ul {
+      visibility: visible;
+      opacity: 1;
+  }
+  
+  .wrapper > :not(:first-child) {
+      margin-left: var(--sidebar-width);
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.img {
+  width: 150px;
+  margin: 0 35px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+/* Logout Button Styles */
+#logoutBtn {
+  background-color: #000000; /* Bootstrap's danger color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-bottom: 1px solid white;
+  padding: 0.5rem 1rem; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1rem; /* Font size */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transition for background, transform, and shadow */
+  width: 90%; /* Full width */ /* Subtle shadow effect */
+  margin: 0 10px; /* Space between buttons */
+}
+
+#logoutBtn a{
+  display: inline;
+}
+#myAccountBtn a{
+  display: inline;
+}
+
+#logoutBtn:hover {
+  background-color: #9b6b71; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight upward movement on hover */
+  box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3); /* Enhanced shadow on hover */
+}
+
+#logoutBtn a:hover {
+  color: white;
+  background-color: #9b6b71;  /* Darker shade on hover */
+  transform: translateY(-2px); 
+}
+
+#logoutBtn:active {
+  transform: translateY(0); /* Reset position on click */
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2); /* Return to original shadow */
+}
+
+#myAccountBtn {
+  position: relative;
+  padding: 0.5rem 1rem;
+  text-align: center; /* Center-align text */
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 10px; /* Position icon on the right */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+  transform-origin: center; /* Rotate around the center */
+  font-size: 0.75rem; /* Smaller icon size */
+  transition: transform 0.3s ease; /
+}
+
+#accountLinks {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 15px;
+  display: none;
+}
+
+#accountLinks li a {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s ease;
+}
+
+#accountLinks li a:hover {
+  background-color: #fff;
+  color: #000;
+}

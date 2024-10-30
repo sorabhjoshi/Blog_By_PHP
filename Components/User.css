@@ -1,0 +1,132 @@
+.success-message {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+
+.wrapper {
+    overflow-x: hidden;
+}
+
+#main {
+    overflow-x: auto;
+    padding: 1rem;
+    color: rgb(0, 0, 0);
+    align-items: flex-start;
+}
+
+.table {
+    width: 100%;
+    max-width: 800px;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+th, td {
+    padding: 0.5rem;
+    border: 1px solid rgb(146, 118, 67);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+tr {
+    border: 1px solid rgb(146, 118, 67);
+}
+
+td a {
+    text-decoration: none;
+    color: rgb(0, 123, 255);
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+#edit a{
+color: rgb(0, 123, 255);
+}
+#delete a {
+    color: rgb(161, 77, 77);
+}
+td a:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: rgb(0, 86, 179);
+}
+
+
+.top-bar {
+    display: flex;
+   
+    flex-direction: column;
+    justify-content:flex-end ;
+    align-items: end;
+    margin-bottom: 10px;
+}
+
+.top-bar a{
+    text-decoration: none;
+    color: white;
+}
+
+.add-button {
+    padding: 0.5rem 1rem;
+    background-color: rgb(0, 123, 255);
+    color: white;
+    border: none;
+    width: 60px;
+    
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: rgb(0, 86, 179);
+}
+
+@media (max-width: 768px) {
+    thead {
+        display: none;
+    }
+    tr {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    td {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        padding: 0.5rem;
+    }
+    td::before {
+        content: attr(data-label);
+        flex: 1;
+        font-weight: bold;
+    }
+}
+
+.datacon{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(218, 212, 200);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.hiddenHeader{
+    display: none;
+}
