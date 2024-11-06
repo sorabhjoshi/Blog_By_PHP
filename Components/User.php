@@ -19,12 +19,13 @@ include 'navbar.php';
 <main id="main">
     
     <div class="datacon">
+    <div style="display: block; background-color:#99aeeb; text-align:center; padding:15px;  font-weight: 600; font-size:larger; border-radius:10px 10px 0 0 ;">Users</div>
     <?php
     if (isset($_GET['message']) && $_GET['message'] == 'deleted') {
         echo "<div class='success-message'>User deleted successfully!</div>";
     }
     ?>
-    <table class="table">
+    <table  class="table">
         <thead class="thead-dark">
             <tr>
                 <th>ID</th>

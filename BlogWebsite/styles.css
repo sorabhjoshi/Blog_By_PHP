@@ -1,0 +1,275 @@
+:root {
+    --primary: #2d3436;
+    --secondary: #636e72;
+    --accent: #00b894;
+    --background: #f5f7fa;
+    --card-bg: #ffffff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    --radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    
+}
+
+header {
+    background-color: rgb(89, 137, 98);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.blog-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.blog-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.blog-content {
+    padding: 15px;
+}
+
+.blog-image {
+    width: 100%;
+    height: fit-content;
+    object-fit: cover;
+}
+
+.blog-title {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: var(--accent);
+}
+
+.blog-description {
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: var(--accent);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.read-more:hover {
+    background-color: var(--primary);
+}
+
+.load-more-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.load-more-btn {
+    padding: 10px 20px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.load-more-btn:hover {
+    background-color: var(--primary);
+}
+
+.blog-post {
+    margin: 30px;
+    padding: 25px;
+    border-radius: var(--radius);
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-md);
+}
+
+.blog-post h1 {
+    margin: 15px 0;
+}
+
+.blog-post img {
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+.blog-post .blog-meta {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.container1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    height: 70px;
+}
+
+.tags {
+    display: flex;
+   gap: 8px;
+}
+
+.tags a {
+    text-decoration: none;
+    color: var(--primary); 
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: color 0.3s;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.tags a:hover {
+    background-color: rgb(72, 106, 77);
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff6f61;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+
+/* Container for the news cards */
+.news-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Styling each news card */
+.news-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+/* News image styling */
+.news-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Content inside the news card */
+.news-content {
+    padding: 15px;
+}
+
+.news-content h2 {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.news-content p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.news-date {
+    font-size: 0.9em;
+    color: #999;
+}
+

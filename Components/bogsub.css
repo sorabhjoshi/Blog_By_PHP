@@ -26,7 +26,8 @@ label {
 }
 input[type="number"],
 input[type="text"],
-textarea {
+textarea,
+#image {
     width: 60%;
     padding: 10px;
     margin-bottom: 15px;

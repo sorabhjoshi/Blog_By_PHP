@@ -44,11 +44,9 @@ include 'headfile.php';
                         Country='$country1', 
                         Pincode='$pincode1' 
                     WHERE id=$id";
-        // echo $sql;die();
 
             if (mysqli_query($conn, $sql)) {
                 $queryresult = "Details Successfully Updated!!";
-                // exit;
             } else {
                 echo 'Error: ' . mysqli_error($conn);
             }

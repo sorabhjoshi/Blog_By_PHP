@@ -61,12 +61,12 @@ if (isset($_POST["sub"])) {
 $sql1 = "SELECT * FROM `user-data` WHERE email='$email'";
 $result = mysqli_query($conn, $sql1);
 $user = mysqli_fetch_array($result);
-$username = $user['name'];
-$phone = $user['Phone_no'];
-$City = $user['City'];
-$State = $user['State'];
-$Country = $user['Country'];
-$Pincode = $user['Pincode'];
+// $username = $user['name'];
+// $phone = $user['Phone_no'];
+// $City = $user['City'];
+// $State = $user['State'];
+// $Country = $user['Country'];
+// $Pincode = $user['Pincode'];
 ?>
 
 <?php include 'headfile.php'; ?>
@@ -77,20 +77,20 @@ $Pincode = $user['Pincode'];
     include 'navbar.php';
     ?>
     <main>
-        <div class="container">
-                
+        <div style="flex-direction: column; padding:0;" class="container">
+        <div style="display: block; background-color:#99aeeb; width:100%;  font-weight: 600; text-align:center; padding:15px; font-size:larger; border-radius:10px 10px 0 0 ; color:black;">Update User Details</div>
                 <form onsubmit="return validate()"  method="POST">
                 <h3><?php echo $queryresult; ?></h3>
                     <div class="big">
                     <div class="col">
                     <div class="name">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" placeholder="<?php echo $username; ?>" value="<?php echo $username; ?>">
+                        <input type="text" id="name" name="name" placeholder="" value="<?php echo $user['name']; ?>">
                         <span id="name-span"></span>
                     </div>
                     <div class="name">
                         <label for="email">E-mail:</label>
-                        <input type="text" id="email" name="email" placeholder="<?php echo $email; ?>" value="<?php echo $email; ?>">
+                        <input type="text" id="email" name="email" placeholder="" value="<?php echo $user['email']; ?>">
                         <span id="email-span"><?php echo $emailerror; ?></span>
                     </div>
                     <div class="name">
@@ -100,29 +100,29 @@ $Pincode = $user['Pincode'];
                     </div>
                     <div class="name">
                         <label for="phone">Phone:</label>
-                        <input type="text" id="phone" name="phone" placeholder="<?php echo $phone; ?>" value="<?php echo $phone; ?>">
+                        <input type="text" id="phone" name="phone" placeholder="" value="<?php echo $user['Phone_no']; ?>">
                         <span id="phone-span"></span>
                     </div>
                     </div>
                     <div class="col">
                     <div class="name">
                         <label for="city">City:</label>
-                        <input type="text" id="city" name="city" placeholder="<?php echo $City; ?>" value="<?php echo $City; ?>">
+                        <input type="text" id="city" name="city" placeholder="" value="<?php echo $user['City']; ?>">
                         <span id="city-span"></span>
                     </div>
                     <div class="name">
                         <label for="State">State:</label>
-                        <input type="text" id="State" name="State" placeholder="<?php echo $State; ?>" value="<?php echo $State; ?>">
+                        <input type="text" id="State" name="State" placeholder="" value="<?php echo $user['State']; ?>">
                         <span id="state-span"></span>
                     </div>
                     <div class="name">
                         <label for="Country">Country:</label>
-                        <input type="text" id="Country" name="Country" placeholder="<?php echo $Country; ?>" value="<?php echo $Country; ?>">
+                        <input type="text" id="Country" name="Country" placeholder="" value="<?php echo $user['Country']; ?>">
                         <span id="country-span"></span>
                     </div>
                     <div class="name">
                         <label for="pincode">Pincode:</label>
-                        <input type="text" id="pincode" name="pincode" placeholder="<?php echo $Pincode; ?>" value="<?php echo $Pincode; ?>">
+                        <input type="text" id="pincode" name="pincode" placeholder="" value="<?php echo $user['Pincode']; ?>">
                         <span id="pincode-span"></span>
                     </div>
                     </div>

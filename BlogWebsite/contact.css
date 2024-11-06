@@ -1,0 +1,56 @@
+.contact-title {
+    text-align: center; /* Align the heading to the left */
+    width: 100%; /* Make the heading take the full width of the container */
+    margin-bottom: 20px; /* Space below the heading */
+    color: var(--primary); /* Set the color of the heading */
+}
+
+.form-container {
+    max-width: 400px; /* Reduced width for the form container */
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 20px; /* Adjusted padding for a more compact feel */
+    margin: 0 auto; /* Center the form container */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Reduced gap between form elements */
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 8px; /* Reduced padding for input and textarea */
+    border: 1px solid var(--secondary);
+    border-radius: var(--radius);
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.submit-btn {
+    padding: 8px 15px; /* Reduced padding for the button */
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    background-color: var(--primary);
+}

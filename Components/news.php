@@ -22,7 +22,7 @@ include 'navbar.php';
 
 
     <div class="datacon">
-    <div style="display: block; background-color:#99aeeb; font-weight: 600; text-align:center; padding:15px; font-size:larger; border-radius:10px 10px 0 0 ;">Blogs</div>
+    <div style="display: block; background-color:#99aeeb; font-weight: 600; text-align:center; padding:15px; font-size:larger; border-radius:10px 10px 0 0 ;">News</div>
     <?php
     if (isset($_GET['message']) && $_GET['message'] == 'deleted') {
         echo "<div class='success-message'>Blog deleted successfully!</div>";
@@ -31,7 +31,7 @@ include 'navbar.php';
     <div style="padding:10px 30px"  class="top-bar">
         <div style=" display: flex; flex-direction:row;">
         <button class="blog-button"><a href="http://localhost/practise/BlogWebsite/Home.php"><i class="fas fa-globe"></i> Go to Blog</a></button>
-        <button class="add-button"><a href="Blogsubmission.php">Add</a></button>
+        <button class="add-button"><a href="NewsSubmission.php">Add</a></button>
         </div>
 
 
@@ -50,7 +50,7 @@ include 'navbar.php';
         </thead>
         <tbody>
             <?php
-            $sql1 = "SELECT * FROM `blogdata`";
+            $sql1 = "SELECT * FROM `newsdata`";
             $result = mysqli_query($conn, $sql1);
             if (!$result) {
                 die("". mysqli_error($conn));
@@ -60,13 +60,13 @@ include 'navbar.php';
 
                 echo "<tr>
                         <td data-label='ID'>".$i++."</td>
-                        <td data-label='User ID'>".$row['User_id']."</td>
+                        <td data-label='User ID'>".$row['user_id']."</td>
                         <td data-label='Author'>".$row['Author_name']."</td>
-                        <td data-label='Title'>".$row['Title']."</td>
-                        <td data-label='Created Date'>".$row['Created_date']."</td>
-                        <td data-label='Updated Date'>".$row['Updated_date']."</td>
-                        <td data-label='Edit' id='edit'><a href='http://localhost/practise/components/EditBlog.php?id=".$row['id']."'>Edit</a></td>
-                        <td data-label='Delete' id='delete'><a href='http://localhost/practise/components/DeleteBlog.php?id=".$row['id']."'>Delete</a></td>
+                        <td data-label='Title'>".$row['title']."</td>
+                        <td data-label='Created Date'>".$row['created_at']."</td>
+                        <td data-label='Updated Date'>".$row['updated_at']."</td>
+                        <td data-label='Edit' id='edit'><a href='http://localhost/practise/components/EditNews.php?id=".$row['id']."'>Edit</a></td>
+                        <td data-label='Delete' id='delete'><a href='http://localhost/practise/components/DeleteNews.php?id=".$row['id']."'>Delete</a></td>
                     </tr>";
             }
             ?>

@@ -17,10 +17,12 @@ function generateSlug($title) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $author_name = filter_input(INPUT_POST, 'author_name', FILTER_SANITIZE_STRING);
-    $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
-    $description = $_POST['description']; 
+   
+    $author_name =  $_POST['author_name'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
 
+   
     if (empty($author_name)) {
         $errors['author_name'] = "Author name is required.";
     }
@@ -34,51 +36,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['image'] = "Image upload is required.";
     }
 
+    
     if (empty($errors)) {
         $image = $_FILES['image'];
-        $imageName = uniqid() . '-' . basename($image['name']); // Unique image name
+        $imageName = basename($image['name']);
         $targetDirectory = "../img/";
         $targetFile = $targetDirectory . $imageName;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
+        
         $allowedTypes = ['jpg', 'jpeg', 'png'];
         if (!in_array($imageFileType, $allowedTypes)) {
             $errors['image'] = "Only JPG, JPEG, PNG files are allowed.";
         } elseif (move_uploaded_file($image['tmp_name'], $targetFile)) {
-            try {
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                if ($conn->connect_error) {
-                    throw new Exception("Connection failed: " . $conn->connect_error);
-                }
+            
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            if ($conn->connect_error) {
+                throw new Exception("Connection failed: " . $conn->connect_error);
+            }
+
+           
+            $slug = generateSlug($title);
+
+            
+            $stmt = $conn->prepare("SELECT * FROM newsdata WHERE slug = ?");
+            $stmt->bind_param("s", $slug);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $errors['title'] = "Title already exists!";
+            } else {
+                include_once "../Login/user.php";
+                $id = $_SESSION["id"];
+                $created_date = date('Y-m-d H:i:s');
+                $updated_date = $created_date;
 
                 
-                $slug = generateSlug($title);
-                $stmt = $conn->prepare("SELECT * FROM blogdata WHERE slug = ?");
-                $stmt->bind_param("s", $slug);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                
-                if ($result->num_rows > 0) {
-                    $errors['title'] = "Title already exists!";
+                $stmt = $conn->prepare("INSERT INTO newsdata (User_id, Author_name, title, slug, created_at, updated_at, description, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("isssssss", $id, $author_name, $title, $slug, $created_date, $updated_date, $description, $targetFile);
+
+                if ($stmt->execute()) {
+                    $message = "Blog submitted successfully!";
+                    header("Location: ../Components/news.php");
+                    exit;
                 } else {
-                    include_once "../Login/user.php";
-                    $id = $_SESSION["id"];
-                    $created_date = date('Y-m-d H:i:s');
-                    $updated_date = $created_date;
-
-                    $stmt = $conn->prepare("INSERT INTO blogdata (User_id, Author_name, Title, slug, Created_date, Updated_date, Description, Image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                    $stmt->bind_param("isssssss", $id, $author_name, $title, $slug, $created_date, $updated_date, $description, $targetFile);
-
-                    if ($stmt->execute()) {
-                        $message = "Blog submitted successfully!";
-                        header("Location: ../Components/Blogs.php");
-                        exit;
-                    } else {
-                        $errors['database'] = "Error: " . $stmt->error;
-                    }
+                    error_log("Database error: " . $stmt->error);
+                    $errors['database'] = "Error: " . $stmt->error;
                 }
-            } catch (Exception $e) {
-                $errors['database'] = "Error: " . $e->getMessage();
             }
         } else {
             $errors['image'] = "Sorry, there was an error uploading your image.";
@@ -108,7 +113,7 @@ include 'navbar.php';
 
 <div class="form-container">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="blogForm" enctype="multipart/form-data">
-        <h1>Submit a Blog</h1>
+        <h1>Submit a News Article</h1>
         
         <label for="author_name">Author Name:</label>
         <input type="text" id="author_name" name="author_name" value="<?php echo htmlspecialchars($author_name); ?>" >
@@ -134,7 +139,7 @@ include 'navbar.php';
             <span class="error"><?php echo $errors['description']; ?></span>
         <?php endif; ?>
         
-        <input style="margin:auto; margin-top:15px;" type="submit" value="Submit Blog">
+        <input style=" margin:auto; margin-top:15px;" type="submit" value="Submit Blog">
         
         <?php if ($message): ?>
             <p class="success"><?php echo $message; ?></p>

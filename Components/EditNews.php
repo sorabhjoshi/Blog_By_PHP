@@ -14,13 +14,13 @@ include 'headfile.php';
     $dbname = "agl";
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-    $sql1 = "SELECT * FROM `blogdata` WHERE id=$id";
+    $sql1 = "SELECT * FROM `newsdata` WHERE id=$id";
     $result = mysqli_query($conn, $sql1);
     $user = mysqli_fetch_array($result);
 
     $Author = htmlspecialchars($user['Author_name']);
-    $Title = htmlspecialchars($user['Title']);
-    $Description = $user['Description'];
+    $Title = htmlspecialchars($user['title']);
+    $Description = $user['description'];
 
     $queryresult = ""; // Initialize empty success message
 
@@ -30,18 +30,18 @@ include 'headfile.php';
         $Description1 = $_POST['DESC'];
         $updated_date = date("Y-m-d H:i:s");  // Get current date and time
 
-        $sql = "UPDATE `blogdata` SET 
+        $sql = "UPDATE `newsdata` SET 
                     Author_name='$Author1', 
-                    Title='$title1', 
-                    Description='$Description1', 
-                    Updated_date='$updated_date'
+                    title='$title1', 
+                    description='$Description1', 
+                    updated_at='$updated_date'
                 WHERE id=$id";
 
         if (mysqli_query($conn, $sql)) {
             $queryresult = "Blog Successfully Updated! Redirecting...";
             echo "<script>
                     setTimeout(function() {
-                        window.location.href = 'Blogs.php';
+                        window.location.href = 'news.php';
                     }, 2000);
                   </script>";
         } else {

@@ -16,13 +16,12 @@
     overflow-x: auto;
     padding: 1rem;
     color: rgb(0, 0, 0);
-    align-items: flex-start;
+    align-items: center;
 }
-
 .table {
     width: 100%;
     max-width: 800px;
-    margin: 1.5rem auto;
+    margin: 30px 30px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -30,7 +29,7 @@
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; 
 }
 
 thead {
@@ -74,7 +73,6 @@ td a:hover {
     flex-direction: column;
     justify-content:flex-end ;
     align-items: end;
-    margin-bottom: 10px;
 }
 
 .top-bar a{
@@ -123,10 +121,27 @@ td a:hover {
 .datacon{
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     background-color: rgb(218, 212, 200);
-    padding: 30px;
+    padding: 0 0px 30px 0px;
     border-radius: 10px;
 }
 
 .hiddenHeader{
     display: none;
+}.blog-button {
+    background-color: #778ed2; /* Match with your theme */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding */
+    margin-right: 10px; /* Space between buttons */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.blog-button a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Ensure link text is white */
+}
+
+.blog-button:hover {
+    background-color: #465e9c; 
 }

@@ -32,8 +32,12 @@ include 'leftsidebar.php';
 include 'navbar.php';
 ?>
 <main>
+
+<div style="flex-direction: column; padding:0;" class="container">
+<div style="display: block; background-color:#99aeeb; width:100%; text-align:center; padding:15px; font-size:larger; font-weight: 600; border-radius:10px 10px 0 0 ; color:black;">User Details</div>
 <div class="container">
 <div class="col">
+
 <div class="name">
 <label for="name">Name:</label>
 <input  type="name" name="name" disabled value=<?php echo $username?>>
@@ -69,6 +73,8 @@ include 'navbar.php';
 <input  type="usertype" name="usertype" disabled value=<?php echo $Pincode?>>
 </div>
 </div>
+</div>
+
 
 
 

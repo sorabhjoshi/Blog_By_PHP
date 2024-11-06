@@ -42,6 +42,11 @@ $useradmin = $_SESSION["usertype"];
         </li>
         <li>
             <button id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> <a href="news.php">News</a>
+            </button>
+        </li>
+        <li>
+            <button id="logoutBtn">
                 <i class="fas fa-sign-out-alt"></i> <a href="Logout.php">Logout</a>
             </button>
         </li>

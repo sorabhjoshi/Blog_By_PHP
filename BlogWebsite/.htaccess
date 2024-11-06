@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Rewrite rule to redirect from /blog/slug to /blog.php?slug=slug
+RewriteRule ^blog/([^/]+)$ blog.php?slug=$1 [L,QSA]
+
+# Rewrite rule to redirect from /newsdetails/slug to /Newsdetails.php?slug=slug
+RewriteRule ^newsdetails/([^/]+)$ Newsdetails.php?slug=$1 [L,QSA]
+
+
